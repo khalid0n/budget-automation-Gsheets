@@ -1,1 +1,7 @@
-few
+# IDE Generated #
+.DS_Store
+/.idea
+/venv
+
+# Credentials for Google API
+client_secret.json
