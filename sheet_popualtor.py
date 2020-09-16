@@ -27,6 +27,7 @@ try:
         'values': values
     }
 
+
     service.spreadsheets().values().update(spreadsheetId=spreadsheet_id, body=data, range=transaction_expenses_amount, valueInputOption='USER_ENTERED').execute()
 
     # print(summary_sheet_expenses_planned.)
