@@ -2,7 +2,7 @@
 .DS_Store
 /.idea
 /venv
-
+/__pycache__
 # Credentials for Google API
 client_secret.json
 
