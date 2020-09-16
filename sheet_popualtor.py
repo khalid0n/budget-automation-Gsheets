@@ -20,6 +20,7 @@ try:
     values = [
         ['mm','3224', 'tv i bought', ''],
         ['dATe','23432', '4134']
+        ['date', 'amount', 'desc', 'categor']
     ]
 
     data = {
