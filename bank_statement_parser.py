@@ -8,10 +8,6 @@ date_dimensions = ''
 amount_dimensions = ''
 desc_dimensions = ''
 
-# print(df.shape)     #(25, 10)
-
-
-
 for row in range(df.shape[0]):
     for col in range(df.shape[1]):
         if df.iat[row, col] == 'Date':
@@ -21,8 +17,8 @@ for row in range(df.shape[0]):
         elif df.iat[row, col] == 'Description ':
             desc_dimensions = (row, col)
     if date_dimensions and amount_dimensions and desc_dimensions:
-        # print("found them all")
         break
+
 
 # print(df.head())
 
@@ -31,43 +27,51 @@ for row in range(df.shape[0]):
 # #  df.shape   returns a tuple dimensions of df  (row, col)
 
 
-
 # from YYYY-MM-DD  to   M/D/YYYY
 
 
+# def get_expenses_list():
+#     single_transaction = []  # [date, amount, description, category]
+#     transactions = []
+#     for row in range(date_dimensions[0] + 1, df.shape[0]):
+#         single_transaction.clear()
+#         if parse_transaction_date(df.loc[row, date_dimensions[1]]) is None:
+#             continue  # skip row if no date provided
+#         single_transaction.insert(0, parse_transaction_date(df.loc[row, date_dimensions[1]]))
+#         if not is_negative(df.loc[row, amount_dimensions[1]]):
+#             continue  # skip row if it's not a negative transaction
+#         single_transaction.insert(1, df.loc[row, amount_dimensions[1]])
+#         single_transaction.insert(2, df.loc[row, desc_dimensions[1]])
+#         single_transaction.insert(3, 'testCateg')
+#         # print(single_transaction)
+#         transactions.append(single_transaction.copy())
+#     return transactions
+
 def get_transactions_list():
-    single_transaction = []
+    single_transaction = []  # [date, amount, description, category]
     transactions = []
+    expenses = []
+    income = []
     for row in range(date_dimensions[0] + 1, df.shape[0]):
         single_transaction.clear()
         if parse_transaction_date(df.loc[row, date_dimensions[1]]) is None:
-            continue
-        single_transaction.insert(0, parse_transaction_date(df.loc[row, date_dimensions[1]]))
-        single_transaction.insert(1, df.loc[row, amount_dimensions[1]])
-        single_transaction.insert(2, df.loc[row, desc_dimensions[1]])
-        single_transaction.insert(3, 'testCateg')
-        # print(single_transaction)
-        transactions.append(single_transaction.copy())
+            continue  # skip row if no date provided
+
+        if not is_negative(df.loc[row, amount_dimensions[1]]):
+            single_transaction.insert(0, parse_transaction_date(df.loc[row, date_dimensions[1]]))
+            single_transaction.insert(1, df.loc[row, amount_dimensions[1]])
+            single_transaction.insert(2, df.loc[row, desc_dimensions[1]])
+            single_transaction.insert(3, 'testCateg')
+            income.append(single_transaction.copy())
+            # continue  # skip row if it's not a negative transaction
+        else:
+            single_transaction.insert(0, parse_transaction_date(df.loc[row, date_dimensions[1]]))
+            single_transaction.insert(1, df.loc[row, amount_dimensions[1]])
+            single_transaction.insert(2, df.loc[row, desc_dimensions[1]])
+            single_transaction.insert(3, 'testCateg')
+            expenses.append(single_transaction.copy())
+    transactions.insert(0, expenses)
+    transactions.insert(1, income)
     return transactions
 
-print(get_transactions_list())
 
-
-# for row in range(amount_dimensions[0] + 1, df.shape[0]):
-#     print(df.loc[row, amount_dimensions[1]])
-#
-# for row in range(desc_dimensions[0] + 1, df.shape[0]):
-#     print(df.loc[row, desc_dimensions[1]])
-
-# Example of reading 'Amount' Column
-# start row from (amount_dimensions[0], df.shape[0])
-
-# def get_transaction_values():
-#     transactions = []
-#
-#
-
-#
-# class Transaction:
-#     def __init__(self):
-#
