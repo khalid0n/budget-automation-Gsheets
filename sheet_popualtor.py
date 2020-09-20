@@ -12,8 +12,8 @@ try:
     print(secret_file)
     spreadsheet_id = '1vP1Pqq89b6Mjgsg7sPi_9rSa0H8Yn3XNhyRFwTFj1Ig'
     summary_sheet_expenses_planned = 'Summary!D28:D40'
-    transaction_expenses_amount = 'Transactions!B5:E30'
-    transaction_income_amount = 'Transactions!G5:J30'
+    expenses_area = 'Transactions!B5:E30'
+    income_area = 'Transactions!G5:J30'
 
     credentials = service_account.Credentials.from_service_account_file(secret_file, scopes=scopes)
     service = discovery.build('sheets', 'v4', credentials=credentials)
@@ -30,10 +30,10 @@ try:
     }
 
     # Expenses
-    service.spreadsheets().values().update(spreadsheetId=spreadsheet_id, body=expenses_data, range=transaction_expenses_amount,
+    service.spreadsheets().values().update(spreadsheetId=spreadsheet_id, body=expenses_data, range=expenses_area,
                                            valueInputOption='USER_ENTERED').execute()
     # Income
-    service.spreadsheets().values().update(spreadsheetId=spreadsheet_id, body=income_data, range=transaction_income_amount,
+    service.spreadsheets().values().update(spreadsheetId=spreadsheet_id, body=income_data, range=income_area,
                                            valueInputOption='USER_ENTERED').execute()
 
 except OSError as e:

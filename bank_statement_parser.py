@@ -8,6 +8,7 @@ date_dimensions = ''
 amount_dimensions = ''
 desc_dimensions = ''
 
+# to find the coordinates (head) of each column
 for row in range(df.shape[0]):
     for col in range(df.shape[1]):
         if df.iat[row, col] == 'Date':
@@ -35,14 +36,13 @@ def get_transactions_list():
             single_transaction.insert(1, df.loc[row, amount_dimensions[1]])
             single_transaction.insert(2, df.loc[row, desc_dimensions[1]])
             single_transaction.insert(3, 'testCateg')
-            income.append(single_transaction.copy())
-            # continue  # skip row if it's not a negative transaction
+            income.append(single_transaction.copy())    # positive transaction, so addition will be in Income
         else:
             single_transaction.insert(0, parse_transaction_date(df.loc[row, date_dimensions[1]]))
             single_transaction.insert(1, df.loc[row, amount_dimensions[1]])
             single_transaction.insert(2, df.loc[row, desc_dimensions[1]])
             single_transaction.insert(3, 'testCateg')
-            expenses.append(single_transaction.copy())
+            expenses.append(single_transaction.copy())  # negative transaction, so addition will be in expense
     transactions.insert(0, expenses)
     transactions.insert(1, income)
     return transactions
