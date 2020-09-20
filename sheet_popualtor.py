@@ -15,19 +15,11 @@ try:
     transaction_expenses_amount = 'Transactions!B5:E30'
     transaction_income_amount = 'Transactions!G5:J30'
 
-
     credentials = service_account.Credentials.from_service_account_file(secret_file, scopes=scopes)
     service = discovery.build('sheets', 'v4', credentials=credentials)
 
-    # values = [
-    #     ['mm', '3224', 'tv i bought', ''],
-    #     ['dATe', '23432', '4134']
-    #     ['date', 'amount', 'desc', 'categor']
-    # ]
-
     expenses = bank_statement_parser.get_transactions_list()[0]
     income = bank_statement_parser.get_transactions_list()[1]
-
 
     expenses_data = {
         'values': expenses
@@ -43,8 +35,6 @@ try:
     # Income
     service.spreadsheets().values().update(spreadsheetId=spreadsheet_id, body=income_data, range=transaction_income_amount,
                                            valueInputOption='USER_ENTERED').execute()
-
-    # print(summary_sheet_expenses_planned.)
 
 except OSError as e:
     print(e)

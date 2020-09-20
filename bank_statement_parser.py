@@ -20,33 +20,6 @@ for row in range(df.shape[0]):
         break
 
 
-# print(df.head())
-
-
-# print(desc_dimensions)
-# #  df.shape   returns a tuple dimensions of df  (row, col)
-
-
-# from YYYY-MM-DD  to   M/D/YYYY
-
-
-# def get_expenses_list():
-#     single_transaction = []  # [date, amount, description, category]
-#     transactions = []
-#     for row in range(date_dimensions[0] + 1, df.shape[0]):
-#         single_transaction.clear()
-#         if parse_transaction_date(df.loc[row, date_dimensions[1]]) is None:
-#             continue  # skip row if no date provided
-#         single_transaction.insert(0, parse_transaction_date(df.loc[row, date_dimensions[1]]))
-#         if not is_negative(df.loc[row, amount_dimensions[1]]):
-#             continue  # skip row if it's not a negative transaction
-#         single_transaction.insert(1, df.loc[row, amount_dimensions[1]])
-#         single_transaction.insert(2, df.loc[row, desc_dimensions[1]])
-#         single_transaction.insert(3, 'testCateg')
-#         # print(single_transaction)
-#         transactions.append(single_transaction.copy())
-#     return transactions
-
 def get_transactions_list():
     single_transaction = []  # [date, amount, description, category]
     transactions = []
