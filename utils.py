@@ -17,4 +17,3 @@ def is_negative(num):
         return True
     else:
         return False
-

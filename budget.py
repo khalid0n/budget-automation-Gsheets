@@ -9,7 +9,6 @@ try:
               "https://www.googleapis.com/auth/drive.file"]
     secret_file = os.path.join(os.getcwd(), 'client_secret.json')
 
-    print(secret_file)
     spreadsheet_id = '1vP1Pqq89b6Mjgsg7sPi_9rSa0H8Yn3XNhyRFwTFj1Ig'
     summary_sheet_expenses_planned = 'Summary!D28:D40'
     expenses_area = 'Transactions!B5:E30'
