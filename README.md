@@ -29,7 +29,7 @@ As of now, Automation Processing will be done in **Transactions** sheet
 - Role should be **Project > Editor**
 - save the resulting private key as JSON. name it "client_secret.json"
 - on your Google Sheet, click **share** button. add the *mail* from `client_secret.json`
-- run `budget.py
+- run `budget.py`
 
 
 ## Limitations
