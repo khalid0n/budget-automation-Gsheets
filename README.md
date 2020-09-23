@@ -1,4 +1,6 @@
 # Budget Automation with Google Sheets Template
+First Project in Python 😄
+
 Automated Monthly Budget Tracking (expenses, income) with Google Sheet template.
 the idea is the following:
 1. read from your bank statement using [pandas](https://pandas.pydata.org/), fetch transaction values
@@ -27,6 +29,12 @@ As of now, Automation Processing will be done in **Transactions** sheet
 - Role should be **Project > Editor**
 - save the resulting private key as JSON. name it "client_secret.json"
 - on your Google Sheet, click **share** button. add the *mail* from `client_secret.json`
+- run `budget.py
 
 
+## Limitations
+in Transactions sheet, after populating them through the file. You need to manually change the category of each transaction 😄
+
+## Demo
+![Demo](demo.gif)
 
